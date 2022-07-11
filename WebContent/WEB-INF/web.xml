@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>Board</display-name>
+  
+  <welcome-file-list>
+    <welcome-file>main</welcome-file>
+  </welcome-file-list>
+
+	<!-- chat관련-이상훈 -->  
+<!--    <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list> -->
+  
+   
+  
+  <servlet>
+  	<servlet-name>UserRegisterServlet</servlet-name>
+  	<servlet-class>user.UserRegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UserRegisterServlet</servlet-name>
+ 	<url-pattern>/userRegister</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>ChatSubmitServlet</servlet-name>
+  	<servlet-class>controller.chat.ChatSubmitController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ChatSubmitServlet</servlet-name>
+ 	<url-pattern>/chatSubmitServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>ChatListServlet</servlet-name>
+  	<servlet-class>controller.chat.ChatListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ChatListServlet</servlet-name>
+ 	<url-pattern>/cahtListServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>UserLoginServlet</servlet-name>
+  	<servlet-class>controller.chat.UserLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UserLoginServlet</servlet-name>
+ 	<url-pattern>/userLogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>ChatUnreadServlet</servlet-name>
+  	<servlet-class>controller.chat.ChatUnreadController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ChatUnreadServlet</servlet-name>
+ 	<url-pattern>/chatUnread</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>chat/box</servlet-name>
+  	<servlet-class>controller.chat.ChatBoxController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>chat/box</servlet-name>
+ 	<url-pattern>/chatBox</url-pattern>
+  </servlet-mapping>
+	<!-- chat관련-end -->  
+	<servlet>
+     <servlet-name>jsp-admin</servlet-name>
+     <jsp-file>/admin.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+     <servlet-name>jsp-admin</servlet-name>
+     <url-pattern>/admin</url-pattern>
+  </servlet-mapping>
+<filter>
+   <filter-name>LoginCheckFilter</filter-name>
+   <filter-class>filter.LoginCheckFilter </filter-class>
+</filter>
+ 
+  <filter>
+	<filter-name>ClubFilter</filter-name>
+	<filter-class>filter.ClubFilter</filter-class>
+</filter>
+<filter>
+	<filter-name>HangulEncodingFilter</filter-name>
+	<filter-class>filter.EncodingFilter</filter-class>
+</filter>
+<!-- 필터 클래스가 적용될 URL-pattern 지정하기 -->
+<filter-mapping>
+   <filter-name>LoginCheckFilter</filter-name>
+   <url-pattern>/find/*</url-pattern>
+   <url-pattern>/club/*</url-pattern>
+   <url-pattern>/notice/*</url-pattern>
+   <url-pattern>/qna/*</url-pattern>
+   <url-pattern>/myclub/*</url-pattern>
+   <url-pattern>/info/*</url-pattern>
+ </filter-mapping>
+	
+<filter-mapping>
+	<filter-name>HangulEncodingFilter</filter-name>
+	<url-pattern>/*</url-pattern> 
+</filter-mapping>
+<filter-mapping>
+	<filter-name>ClubFilter</filter-name>
+	<url-pattern>/club/sns/*</url-pattern> 
+</filter-mapping>
+  
+  
+</web-app>
